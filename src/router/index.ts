@@ -1,10 +1,6 @@
 import Vue from "vue";
 import Router from 'vue-router'
 Vue.use(Router);
-const index = () => import(/* webpackChunkName:'index' */ '../vue/index.vue');
-const about = () => import(/* webpackChunkName:'about' */ "../vue/about.vue");
-const normal = () => import(/* webpackChunkName:'normal' */ "../vue/normal.vue");
-const popup = () => import(/* webpackChunkName:'popup' */ "../vue/popup.vue");
 // const normal = (r: any) => (require as any).ensure([], () => r(require('../vue/normal.vue'))); // 新建
 // const popup = (r: any) => (require as any).ensure([], () => r(require('../vue/popup.vue'))); // 新建
 let router = new Router({
@@ -13,22 +9,23 @@ let router = new Router({
     {
       path:"/index",
       name:"index",
-      component: index
+      component: () => import(/* webpackChunkName:'index' */ '../components/index.vue')
     },
     {
       path:"/about",
       name:"about",
-      component: about
+      component: () => import(/* webpackChunkName:'about' */ "../components/about.vue")
     },
     {
       path:"/normal",
       name:"normal",
-      component: normal
+      component: () => import(/* webpackChunkName:'normal' */ "../components/normal.vue")
     },
     {
+
       path:"/popup",
       name:"popup",
-      component: popup
+      component: () => import(/* webpackChunkName:'popup' */ "../components/popup.vue")
     }
   ]
 })
