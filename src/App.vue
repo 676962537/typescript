@@ -17,7 +17,7 @@
   })
   export default class App extends Vue{
     private mounted(){
-      console.log("app")
+      // console.log("app")
     }
   }
 </script>

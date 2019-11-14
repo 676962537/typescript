@@ -7,13 +7,13 @@
 
 <script>
   import {getMyName,getMyAge} from "../common/util"
-  // import {getMyId} from "../common/common"
+  import {getMyId} from "../common/own"
   export default {
     name: "popup.vue",
     mounted(){
-      getMyName();
-      getMyAge();
-      // getMyId();
+      getMyName("popup.vue");
+      getMyAge("popup.vue");
+      getMyId();
     }
   }
 </script>

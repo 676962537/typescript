@@ -1,6 +1,6 @@
-export const getMyName = () => {
-  console.log("mahenan---mahenan");
+export const getMyName = (key:string) => {
+  console.log(`getMyName----${key}`);
 }
-export const getMyAge = () => {
-  console.log(200);
+export const getMyAge = (count:string) => {
+  console.log(`getMyAge----${count}`);
 }

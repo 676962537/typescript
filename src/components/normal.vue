@@ -11,9 +11,8 @@
     export default {
     name: "normal",
       mounted(){
-        getMyName();
-        getMyAge();
-        console.log(vue);
+        getMyName("normal.vue");
+        getMyAge("normal.vue");
       }
   }
 </script>

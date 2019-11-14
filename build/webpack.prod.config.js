@@ -8,7 +8,6 @@ console.log("生产环境代码打包中......")
 module.exports = webpackMerge(base, {
   mode: "none",
   // mode: "production",
-
   // 输出配置
   output: {
     filename: 'js/[name].[chunkhash].js',
@@ -20,31 +19,29 @@ module.exports = webpackMerge(base, {
     runtimeChunk: 'single',
     splitChunks: {
       chunks: "all",
-      // minSize: 0,
-      // minChunks: 100,
-      // maxAsyncRequests: 5,
-      // maxInitialRequests: 3,
-      // automaticNameDelimiter: "-",
       cacheGroups: {
         // 详细配置的优先级 比较高 相对比公用配置
+        // 自定义vendor会将代码内部动态引入的所有第三方模块都打包进vendor而不生成独立的chunk
         vendor: {
           name:'vendor',
           minChunks: 1,
           test: /[\\/]node_modules[\\/]/,
-          priority: 10 // 优先级
+          priority:  10 // 优先级
         },
+        //
+        // 提取公共代码（非node_modules下），范围可以是所有主chunk和异步chunk
         common: {
           // minChunks数与按需加载有冲突，按需加载就是引入了一次，
           // minChunks设置1的时候，按需加载的模块不会单独生成chunk了而是会被打包进common
           name: "common",
           test: /[\\/]src[\\/]/,
           chunks: "all",
-          // 最小的chunk引用数
+          // 最小的chunk引用数,大于才会被抽离 3
           minChunks: 2,
           // 为了测试common打包，设置成0表示大于0的chunk就可以被创建，默认30000
           minSize: 0,
-          priority: 5, // 优先级
-          reuseExistingChunk: true
+          priority: 20, // 优先级
+          // reuseExistingChunk: true
         }
       }
     }

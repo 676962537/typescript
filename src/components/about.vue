@@ -8,14 +8,17 @@
 <script lang='ts'>
   import {Component, Vue, Watch, Prop} from 'vue-property-decorator';
   import {State, Getter, Action, Mutation} from 'vuex-class';
-  import {getMyName} from "../common/util"
+  import {getMyName,getMyAge} from "../common/util"
+  import {Independent} from "../common/Independent"
   @Component({
 
   })
   export default class About extends Vue {
     private name='about'
     private mounted(){
-      getMyName();
+      getMyName("about.vue");
+      getMyAge("about.vue");
+      Independent();
     }
   }
 </script>

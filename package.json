@@ -1,19 +1,20 @@
 {
-  "name": "websocket",
+  "name": "myowntsdec",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && cross-env NODE_ENV=production node_modules/.bin/webpack --config build/webpack.prod.config.js --progress",
-    "local": "rm -rf dist && node_modules/.bin/webpack --config build/webpack.dev.config.js",
-    "serve": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --progress"
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --progress",
+    "test": "node server.js"
   },
-  "author": "",
+  "author": "mahenan",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.6.3",
     "@babel/preset-env": "*",
     "@babel/runtime": "*",
+    "@types/lodash": "^4.14.147",
     "@types/swiper": "^5.2.0",
     "axios": "^0.17.1",
     "babel-loader": "*",
@@ -28,6 +29,7 @@
     "jquery": "^3.2.1",
     "js-cookie": "2.2.0",
     "json-loader": "^0.5.7",
+    "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.5.3",
     "nprogress": "0.2.0",

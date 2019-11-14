@@ -12,7 +12,8 @@ import vue from 'vue'
 import {Component, Vue, Watch, Prop, Emit} from 'vue-property-decorator';
 import {State, Getter, Action, Mutation} from 'vuex-class';
 import {getMyName,getMyAge} from "../common/util"
-import {getMyId} from "../common/common"
+import {getMyId} from "../common/own"
+import {Independent} from "../common/Independent"
 @Component({
   components:{
 
@@ -21,12 +22,18 @@ import {getMyId} from "../common/common"
 export default class Index extends Vue {
   private name='index'
   private mounted(){
-    getMyName();
-    getMyAge();
+    getMyName("index.vue");
+    getMyAge("index.vue");
     getMyId();
+    Independent();
   }
   private clickFn(){
-
+    import(/* webpackChunkName:'lodash222' */'lodash').then((lodash) => {
+      console.log("lodash:",lodash);
+    });
+    import(/* webpackChunkName:'Independent' */'../common/Independent').then(({Independent}) => {
+      console.log("Independent:",Independent);
+    });
   }
 }
 </script>
