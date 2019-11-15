@@ -8,6 +8,8 @@ let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let glob = require("glob")
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// var Visualizer = require('webpack-visualizer-plugin');
 module.exports = {
     // 入口文件，path.resolve()方法，可以结合我们给定的两个参数最后生成绝对路径，最终指向的就是我们的index.js文件
     entry: {
@@ -93,5 +95,7 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
+        // new BundleAnalyzerPlugin()
+        // new Visualizer()
     ]
 };

@@ -21,6 +21,20 @@ module.exports = webpackMerge(base, {
     disableHostCheck: true
     // quiet: true, // necessary for FriendlyErrorsPlugin
   },
+  optimization:{
+    splitChunks:{
+      minChunks: 2,
+      cacheGroups:{
+        default:{
+          minChunks: 2,
+          priority:  20, // 优先级
+          reuseExistingChunk: true,
+          minSize: 0,
+          name:"default"
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {

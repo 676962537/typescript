@@ -6,7 +6,9 @@
     <router-link to="/about">/about</router-link>
     <router-link to="/normal">/normal</router-link>
     <router-link to="/popup">/popup</router-link>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 

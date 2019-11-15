@@ -25,6 +25,7 @@ module.exports = webpackMerge(base, {
         vendor: {
           name:'vendor',
           minChunks: 1,
+          chunks: "all",
           test: /[\\/]node_modules[\\/]/,
           priority:  10 // 优先级
         },
