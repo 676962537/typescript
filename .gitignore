@@ -1,2 +1,15 @@
+<<<<<<< HEAD
 node_modules
 .idea
+=======
+/node_modules
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+/.idea
+.idea
+workspace.xml
+/dist
+>>>>>>> 5776b20fc4f3edf13b14c886687943b0f5258298
