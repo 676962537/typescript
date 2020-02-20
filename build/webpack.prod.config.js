@@ -1,9 +1,12 @@
 let webpack = require('webpack');
 let webpackMerge = require("webpack-merge");
 let base = require("./webpack.base.config");
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const miniCssExtractPlugin = require('mini-css-extract-plugin');
+let UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+let miniCssExtractPlugin = require('mini-css-extract-plugin');
+let TerserPlugin = require('terser-webpack-plugin');
+let optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let path = require('path');
 console.log("生产环境代码打包中......")
 module.exports = webpackMerge(base, {
   mode: "none",
@@ -14,8 +17,13 @@ module.exports = webpackMerge(base, {
     chunkFilename: "js/[name].[chunkhash].js"
   },
   optimization: {
-    // minimize: true,
-    // minimizer: [new TerserPlugin()],
+    minimize: true,
+    minimizer: [
+      // 压缩js文件，可以自定义配置
+      new TerserPlugin(),
+      // 压缩css文件，可以自定义配置
+      new optimizeCSSAssetsPlugin()
+    ],
     runtimeChunk: 'single',
     splitChunks: {
       chunks: "all",
@@ -81,5 +89,18 @@ module.exports = webpackMerge(base, {
     new miniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'
     }),
-  ],
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template:path.resolve('public/index.html'),
+      minify: {
+        // 尽可能删除属性周围的引号
+        removeAttributeQuotes:true,
+        // 删除注释
+        removeComments: true,
+        collapseWhitespace: true,
+        removeScriptTypeAttributes:true,
+        removeStyleLinkTypeAttributes:true
+      }
+    })
+  ]
 });

@@ -5,6 +5,8 @@
     <counter1></counter1>
     <counter></counter>
     <counter2></counter2>
+    <div>----------</div>
+    <subCom></subCom>
   </div>
 </template>
 
@@ -13,15 +15,19 @@
   import {getMyId} from "../common/own"
   import counter from "../componentRegistration/button-counter-obj"
   import counter2 from "../componentRegistration/button-counter-vue.vue"
+  import subCom from './subCom.vue';
   export default {
     name: "popup.vue",
     mounted(){
-      getMyName("popup.vue");
-      getMyAge("popup.vue");
-      getMyId();
+      console.log("popup.vue mounted");
+    },
+    data(){
+      return {
+        name:'chenhong'
+      }
     },
     components:{
-      counter,counter2
+      counter,counter2,subCom
     }
   }
 </script>

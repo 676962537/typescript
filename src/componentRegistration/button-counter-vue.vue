@@ -1,5 +1,5 @@
 <template>
-  <div @click="clickHandler">mahenan--button-counter-vue.vue--{{count}}</div>
+  <div @click="clickHandler">mahenan--button-counter-vue.vue--mahenan--{{count}}</div>
 </template>
 
 <script lang="ts">
